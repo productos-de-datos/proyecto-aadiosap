@@ -21,6 +21,24 @@ def create_data_lake():
 
 
     """
+    import os
+
+    data_lake_dirs=["landing","raw","cleansed","business"]
+    bussines_dirs=["reports","features","forecasts"]
+    reports_dirs=["figures"]
+
+    os.makedirs('data_lake', exist_ok=True)
+
+    for dicts in data_lake_dirs:
+        new_path="data_lake/"&dicts
+        os.makedirs(new_path,exist_ok=True)
+
+    for dicts in bussines_dirs:
+        new_path="data_lake/business"&dicts
+        os.makedirs(new_path,exist_ok=True)
+    
+    os.makedirs('data_lake/reports/figures',exist_ok=True)
+
     raise NotImplementedError("Implementar esta función")
 
 
