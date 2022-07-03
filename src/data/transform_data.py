@@ -67,16 +67,17 @@ def transform_data():
     def save_file(file_to_csv,files):
         file_to_csv.to_csv('data_lake/raw/{}.csv'.format(files[0:4]),index=False)
 
-    if __name__ == "__main__":
-        files_to_export = get_files_to_export()
-        path_to_export = 'data_lake/landing/'
-        get_df_raw(files_to_export,path_to_export)
+#    if __name__ == "__main__":
+#        files_to_export = get_files_to_export()
+#        path_to_export = 'data_lake/landing/'
+#        get_df_raw(files_to_export,path_to_export)
 
 #    raise NotImplementedError("Implementar esta función")
-
+    files_to_export = get_files_to_export()
+    path_to_export = 'data_lake/landing/'
+    get_df_raw(files_to_export,path_to_export)
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
     transform_data()
