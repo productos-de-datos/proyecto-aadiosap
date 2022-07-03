@@ -21,13 +21,19 @@ def ingest_data():
     
     years_to_download = arange(1995,2022,1)
     begining_url = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/'
-    end_url = '.xlsx?raw=True'
     path_to_save_rawdata = 'data_lake/landing/'
 
     for years in years_to_download:
-        remote_url = str(begining_url) + str(years) + str(end_url)
-        local_file = str(path_to_save_rawdata) + str(years) + str(end_url[0:4])
-        request.urlretrieve(remote_url, local_file)
+        if years in range(2016,2018):
+            end_url = '.xls?raw=true'
+            url_to_download = str(begining_url) + str(years) + str(end_url)
+            path_to_save = str(path_to_save_rawdata) + str(years) + str(end_url[0:4])
+            request.urlretrieve(url_to_download, path_to_save)
+        else:
+            end_url = '.xlsx?raw=true'            
+            url_to_download = str(begining_url) + str(years) + str(end_url)
+            path_to_save = str(path_to_save_rawdata) + str(years) + str(end_url[0:5])
+            request.urlretrieve(url_to_download, path_to_save)
 
 
     # Definimos la URL del archivo a descargar

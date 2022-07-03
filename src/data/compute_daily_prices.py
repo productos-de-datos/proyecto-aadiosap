@@ -1,3 +1,6 @@
+from multiprocessing.sharedctypes import Value
+
+
 def compute_daily_prices():
     """Compute los precios promedios diarios.
 
@@ -12,10 +15,20 @@ def compute_daily_prices():
 
 
     """
-    raise NotImplementedError("Implementar esta función")
+    #raise NotImplementedError("Implementar esta función")
+
+    import pandas as pd
+
+    prices_per_hour = pd.read_csv('data_lake/cleansed/precios-horarios.csv')
+    prices_per_day = prices_per_hour.groupby('Fecha').mean('Value')
+    prices_per_day.to_csv('data_lake/business/precios-diarios.csv')
+    print(prices_per_day.head())
+
 
 
 if __name__ == "__main__":
     import doctest
 
     doctest.testmod()
+
+compute_daily_prices()
