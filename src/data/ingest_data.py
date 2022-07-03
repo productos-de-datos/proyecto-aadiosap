@@ -11,7 +11,6 @@ Módulo de ingestión de datos.
 
 """
 from urllib import request
-from numpy import arange
 
 def ingest_data(years_to_download,url,path_to_save_rawdata):
     for years in years_to_download:
