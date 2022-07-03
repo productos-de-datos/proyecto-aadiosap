@@ -1,6 +1,11 @@
-from sqlite3 import PARSE_COLNAMES
-from numpy import arange, dtype
+#from sqlite3 import PARSE_COLNAMES
+#from numpy import arange, dtype
 
+"""
+Módulo de transformación de datos.
+-------------------------------------------------------------------------------
+
+"""
 
 def transform_data():
     """Transforme los archivos xls a csv.
@@ -75,20 +80,3 @@ if __name__ == "__main__":
 
     doctest.testmod()
     transform_data()
-
-
-
-
-import pandas as pd
-
-#file_to_csv_raw = pd.read_excel('data_lake/landing/1996.xlsx',header=None)
-#header_row = file_to_csv_raw[file_to_csv_raw[0].eq('Fecha')].index.values[0]
-#file_to_csv = pd.read_excel('data_lake/landing/1996.xlsx',header=header_row,usecols="A:Y")
-#column_names = list(file_to_csv.columns)
-#column_names = list((x.zfill(2) for x in column_names))
-#column_names = list(map(lambda x: 'H'+str(x) if len(x)==2 else x,column_names))
-#file_to_csv.columns = column_names
-#file_to_csv['Fecha'] = file_to_csv['Fecha'].apply(lambda x: x.strftime("%Y-%m-%d") if type(x) != str else x)
-#file_to_csv.to_csv('data_lake/raw/{}.csv'.format(files[0:4]))
-#print(file_to_csv.tail(10))
-#file_to_csv.to_csv('data_lake/raw/prueba.csv',index=False)

@@ -20,7 +20,7 @@ def compute_daily_prices():
     import pandas as pd
 
     prices_per_hour = pd.read_csv('data_lake/cleansed/precios-horarios.csv')
-    prices_per_day = prices_per_hour.groupby('Fecha').mean('Value')
+    prices_per_day = prices_per_hour.groupby('fecha').mean('precio')
     prices_per_day.to_csv('data_lake/business/precios-diarios.csv')
     print(prices_per_day.head())
 
