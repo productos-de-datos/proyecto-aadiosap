@@ -18,8 +18,8 @@ def compute_monthly_prices():
 
     prices_per_hour = pd.read_csv('data_lake/cleansed/precios-horarios.csv')
     prices_per_month = prices_per_hour.copy()
-    prices_per_month['fecha'] = prices_per_month['Fecha'].map(lambda x:str(x)[0:7]+str('-01'))
-    prices_per_month = prices_per_month.groupby('fecha').mean('Value')
+    prices_per_month['fecha'] = prices_per_month['fecha'].map(lambda x:str(x)[0:7]+str('-01'))
+    prices_per_month = prices_per_month.groupby('fecha').mean('precio')
     prices_per_month.to_csv('data_lake/business/precios-mensuales.csv')
     print(prices_per_month.head(25))
 
