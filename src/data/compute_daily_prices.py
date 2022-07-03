@@ -23,7 +23,7 @@ def compute_daily_prices():
     """
     #raise NotImplementedError("Implementar esta función")
 
-    import pandas as pd
+    
 
     prices_per_hour = pd.read_csv('data_lake/cleansed/precios-horarios.csv')
     prices_per_day = prices_per_hour.groupby('fecha').mean('precio')
@@ -33,6 +33,7 @@ def compute_daily_prices():
 
 
 if __name__ == "__main__":
+    import pandas as pd
     import doctest
     doctest.testmod()
     compute_daily_prices()

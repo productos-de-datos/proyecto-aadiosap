@@ -22,9 +22,7 @@ def clean_data():
 
 
     """
-    import pandas as pd
-    import os
-    from datetime import datetime
+
     
     def get_files_to_combine(root_path):
         files_to_combine = os.listdir(root_path)
@@ -58,6 +56,9 @@ def clean_data():
 #    raise NotImplementedError("Implementar esta función")
 
 if __name__ == "__main__":
+    import pandas as pd
+    import os
+    from datetime import datetime
     import doctest
     doctest.testmod()
     clean_data()

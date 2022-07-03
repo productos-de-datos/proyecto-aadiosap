@@ -28,7 +28,7 @@ Módulo de creación de datalake.
 
     """
 
-import os
+
 
 def create_data_lake():
     os.makedirs('data_lake', exist_ok=True)
@@ -46,6 +46,7 @@ def create_data_lake():
 
 if __name__ == "__main__":
     import doctest
+    import os
     data_lake_dirs=["landing","raw","cleansed","business"]
     bussines_dirs=["reports","features","forecasts"]
     doctest.testmod()

@@ -10,7 +10,7 @@ Módulo de ingestión de datos.
     descarga debe realizarse usando únicamente funciones de Python.
 
 """
-from urllib import request
+
 
 def ingest_data(years_to_download,url,path_to_save_rawdata):
     for years in years_to_download:
@@ -28,6 +28,7 @@ def ingest_data(years_to_download,url,path_to_save_rawdata):
 if __name__ == "__main__":
     import doctest
     import numpy as np
+    from urllib import request
     years_to_download = np.arange(1995,2022,1)
     url = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/'
     path_to_save_rawdata = 'data_lake/landing/'
