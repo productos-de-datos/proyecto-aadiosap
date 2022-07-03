@@ -19,18 +19,22 @@ def ingest_data():
         for years in years_to_download:
             if years in range(2016,2018):
                 extension = '.xls?raw=true'
+                url_to_download = str(url) + str(years) + str(extension)
+                path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:4])
+                request.urlretrieve(url_to_download, path_to_save)
             else:
                 extension = '.xlsx?raw=true'      
-            url_to_download = str(url) + str(years) + str(extension)
-            path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:4])
-            request.urlretrieve(url_to_download, path_to_save)
+                url_to_download = str(url) + str(years) + str(extension)
+                path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:5])
+                request.urlretrieve(url_to_download, path_to_save)
     
     get_raw_data(years_to_download,url,path_to_save_rawdata)
     
 if __name__ == "__main__":
     import doctest
+    import numpy as np
 
-    years_to_download = arange(1995,2022,1)
+    years_to_download = np.arange(1995,2022,1)
     url = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/'
     path_to_save_rawdata = 'data_lake/landing/'
 
