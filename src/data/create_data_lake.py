@@ -1,5 +1,11 @@
-from ntpath import join
-from pandas import concat
+#from ntpath import join
+#from pandas import concat
+
+"""
+Módulo de creación de datalake.
+-------------------------------------------------------------------------------
+
+"""
 
 
 def create_data_lake():
@@ -47,7 +53,5 @@ def create_data_lake():
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
-
-create_data_lake()
+    create_data_lake()

@@ -1,3 +1,9 @@
+"""
+Módulo de caracteristicas del modelo de proponistuco de precios.
+-------------------------------------------------------------------------------
+
+"""
+
 def make_features():
     """Prepara datos para pronóstico.
 

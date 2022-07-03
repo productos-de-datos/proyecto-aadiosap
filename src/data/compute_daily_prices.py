@@ -1,4 +1,10 @@
-from multiprocessing.sharedctypes import Value
+#from multiprocessing.sharedctypes import Value
+
+"""
+Módulo de calculo de precios diarios.
+-------------------------------------------------------------------------------
+
+"""
 
 
 def compute_daily_prices():
@@ -28,7 +34,5 @@ def compute_daily_prices():
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
-
-compute_daily_prices()
+    compute_daily_prices()

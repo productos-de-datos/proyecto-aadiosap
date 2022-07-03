@@ -1,5 +1,11 @@
-from datetime import date
-from pandas import concat
+#from datetime import date
+#from pandas import concat
+
+"""
+Módulo de limpieza de datos.
+-------------------------------------------------------------------------------
+
+"""
 
 
 def clean_data():

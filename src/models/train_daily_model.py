@@ -1,3 +1,10 @@
+"""
+Módulo de entrenamiento de modelo de pronostico de precios futuros.
+-------------------------------------------------------------------------------
+
+"""
+
+
 def train_daily_model():
     """Entrena el modelo de pronóstico de precios diarios.
 
