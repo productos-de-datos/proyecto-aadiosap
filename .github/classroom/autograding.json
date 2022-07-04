@@ -233,7 +233,7 @@
     {
       "name": "Test 24",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
-      "run": "python3 src/models/train_daily_model.py",
+      "run": "rm -rf src/models/precios-diarios.pkl | python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",
       "comparison": "included",
