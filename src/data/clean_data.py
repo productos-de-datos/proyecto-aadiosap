@@ -1,6 +1,10 @@
 """
 Módulo de limpieza de datos.
 -------------------------------------------------------------------------------
+En este modulo se combinan 27 archivos tipo csv en uno solo mediante su
+concatenación en sus filas, luego mediante la función melt las horas se vuelven
+una unica columna, de esta manera se facilita su manipulación
+
 """
 """Realice la limpieza y transformación de los archivos CSV.
 
@@ -49,10 +53,24 @@ def clean_data():
     except EmptyDataError:
         print('Datos no leidos')
 
+def test_format_columns():
+    datos = {
+        'Nombre' : ['Juan', 'Laura', 'Pepe'],
+        'Edad': [42, 40, 37],
+        'Departamento': ['Comunicación', 'Administración', 'Ventas']
+    }
 
-#    raise NotImplementedError("Implementar esta función")
+    esperado = {
+        'fecha' : ['Juan', 'Laura', 'Pepe'],
+        'hora': [42, 40, 37],
+        'precio': ['Comunicación', 'Administración', 'Ventas']
+    }
+    df_datos = pd.DataFrame(datos)
+    df_esperado = pd.DataFrame(esperado) 
+    assert format_columns(df_datos)==df_esperado
 
 if __name__ == "__main__":
     doctest.testmod()
     clean_data()
+
 
