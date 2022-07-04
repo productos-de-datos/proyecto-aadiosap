@@ -16,16 +16,16 @@ import urllib.request
 
 def ingest_data():
     years_to_download = np.arange(1995,2022,1)
-    url = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/'
+    url = 'https://github.com/jdvelasq/datalabs/raw/master/datasets/precio_bolsa_nacional/xls/'
     path_to_save_rawdata = 'data_lake/landing/'
     for years in years_to_download:
         if years in range(2016,2018):
-            extension = '.xls?raw=true'
+            extension = '.xls'
             url_to_download = str(url) + str(years) + str(extension)
             path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:4])
             urllib.request.urlretrieve(url_to_download, path_to_save)
         else:
-            extension = '.xlsx?raw=true'
+            extension = '.xlsx'
             url_to_download = str(url) + str(years) + str(extension)
             path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:5])
             urllib.request.urlretrieve(url_to_download, path_to_save)
