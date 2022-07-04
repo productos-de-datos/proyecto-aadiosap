@@ -16,13 +16,17 @@ Módulo de transformación de datos.
     
 """"""""   
 import doctest
+from importlib.metadata import files
 import os
 import pandas as pd
 from datetime import datetime
+import openpyxl 
+import xlrd
 
 def get_files_to_export():     
     files_to_export = os.listdir('data_lake/landing')
     files_to_export = files_to_export[0:27]
+    print(files_to_export)
     path_to_export = 'data_lake/landing/'
     return files_to_export
         
@@ -55,15 +59,18 @@ def remove_duplicated(data_w_duplicated):
     return data_wo_duplicated
 
 def save_file(file_to_csv,files):
-    file_to_csv.to_csv('data_lake/raw/{}.csv'.format(files[0:4]),index=False)
+    file_to_csv.to_csv('data_lake/raw/{}.csv'.format(files[0:4]),index=False,encoding='utf-8')
 
 def transform_data():
     files_to_export = get_files_to_export()
     path_to_export = 'data_lake/landing/'
+    raw_extension = '?raw=true'    
+    
     for files in files_to_export:
         file_name = get_file_name(path_to_export,files)
-        file_to_csv_raw = pd.read_excel(file_name,header=None,engine=None)
-        file_to_csv_w_headers = pd.read_excel(file_name,header=get_header(file_to_csv_raw),usecols="A:Y",engine=None)
+        file_to_csv_raw = pd.read_excel(file_name,header=None)
+        file_to_csv_w_headers = pd.read_excel(
+            file_name,header=get_header(file_to_csv_raw),usecols="A:Y")
         file_to_csv_with_headers = format_headers(file_to_csv_w_headers)
         file_to_csv = format_dates(file_to_csv_with_headers)
         file_to_csv = remove_nas(file_to_csv)
