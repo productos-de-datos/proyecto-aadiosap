@@ -12,7 +12,7 @@ Módulo de ingestión de datos.
 """
 import doctest
 import numpy as np
-from urllib import request
+import urllib.request
 
 def ingest_data():
     years_to_download = np.arange(1995,2022,1)
@@ -23,12 +23,12 @@ def ingest_data():
             extension = '.xls?raw=true'
             url_to_download = str(url) + str(years) + str(extension)
             path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:4])
-            request.urlretrieve(url_to_download, path_to_save)
+            urllib.request.urlretrieve(url_to_download, path_to_save)
         else:
             extension = '.xlsx?raw=true'      
             url_to_download = str(url) + str(years) + str(extension)
             path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:5])
-            request.urlretrieve(url_to_download, path_to_save)
+            urllib.request.urlretrieve(url_to_download, path_to_save)
     
 if __name__ == "__main__":
     doctest.testmod()
