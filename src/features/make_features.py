@@ -23,6 +23,7 @@ def make_features():
     df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
     df['day_number'] = df.fecha.dt.weekday
     df.to_csv('data_lake/business/features/precios_diarios.csv', index=False)
+    return True
 
 if __name__ == "__main__":
     import doctest
