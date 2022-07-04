@@ -213,7 +213,7 @@
     {
       "name": "Test 22",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "python3 src/features/make_features.py | python3 src/data/clean_data.py",
+      "run": "python3 src/features/make_features.py | python3 src/data/clean_data.py ",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -223,7 +223,7 @@
     {
       "name": "Test 23",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "python3 src/models/make_forecasts.py | python3 src/features/make_features.py",
+      "run": "python3 src/models/make_forecasts.py | python3 src/features/make_features.py | python3 src/data/clean_data.py ",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -233,7 +233,7 @@
     {
       "name": "Test 24",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "python3 src/models/train_daily_model.py | python3 src/features/make_features.py ",
+      "run": "python3 src/models/train_daily_model.py | python3 src/features/make_features.py | python3 src/data/clean_data.py ",
       "input": "",
       "output": "",
       "comparison": "included",
