@@ -243,7 +243,7 @@
     {
       "name": "Test 25",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "python3 src/visualization/make_daily_prices_plot.py",
+      "run": "python3 src/data/clean_data.py | python3 src/visualization/make_daily_prices_plot.py",
       "input": "",
       "output": "",
       "comparison": "included",
