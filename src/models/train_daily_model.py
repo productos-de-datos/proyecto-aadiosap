@@ -3,45 +3,32 @@ Módulo de entrenamiento de modelo de pronostico de precios futuros.
 -------------------------------------------------------------------------------
 
 """
-
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn import linear_model
+from sklearn.metrics import mean_squared_error
+import numpy as np
+import pickle
 
 def train_daily_model():
-    """Entrena el modelo de pronóstico de precios diarios.
 
-    Con las features entrene el modelo de proóstico de precios diarios y
-    salvelo en models/precios-diarios.pkl
+    df = pd.read_csv('data_lake/business/features/precios_diarios.csv')
+    df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
+    df['day_number'] = pd.to_numeric(df['day_number'])
 
+    X = np.array(df['day_number']).reshape(-1, 1)
+    y = np.array(df['precio']).reshape(-1, 1)
 
-    """
-    def set_data(path):
-        data_to_train = pd.read_csv('data_lake/business/features/precios_diarios.csv')
-        return data_to_train
+    print(X)
+    print(y)
 
-    def format_dates(data):
-        data['Fecha'] = data['Fecha'].apply(
-                lambda x: datetime.strptime(x,"%Y-%m-%d") if type(x) == str else x)
-        return data
-        
-    from sklearn import linear_model
-    import pandas as pd
-    from datetime import datetime
-
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=22)
     regr = linear_model.LinearRegression()
-
-    data_to_train = set_data(path)
-    data_to_train = format_dates(data_to_train)
-    print(data_to_train.dtypes)
-    x = data_to_train.Fecha
-    y = data_to_train.value
-    regr.fit(x, y)
-    print("Coeficientes: ", regr.coef_)
-    print("\nIntercepto: ", regr.intercept_)
-
-    #raise NotImplementedError("Implementar esta función")
+    model = regr.fit(X_train, y_train)
+    pickle.dump(model, open("src/models/precios-diarios.pkl", "wb"))
 
 
 if __name__ == "__main__":
     import doctest
-    path = 'data_lake/business/features/precios_diarios.csv'
     doctest.testmod()
     train_daily_model()
