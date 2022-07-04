@@ -19,6 +19,7 @@ import pandas as pd
 import os
 from datetime import datetime
 import doctest
+from pandas.errors import EmptyDataError
 
 def get_files_to_combine(root_path):
     files_to_combine = os.listdir(root_path)
@@ -38,12 +39,15 @@ def format_columns(data_combine):
     return data_combine
 
 def clean_data():
-    root_path = 'data_lake/raw'
-    data_combine = pd.concat(map(pd.read_csv,get_files_to_combine(root_path)), ignore_index=True)
-    data_combine = pd.melt(data_combine,id_vars=['Fecha'])
-    data_combine = format_dates(data_combine)
-    data_combine = format_columns(data_combine)
-    data_combine.to_csv('data_lake/cleansed/precios-horarios.csv',index=False)       
+    try:
+        root_path = 'data_lake/raw'
+        data_combine = pd.concat(map(pd.read_csv,get_files_to_combine(root_path)), ignore_index=True)
+        data_combine = pd.melt(data_combine,id_vars=['Fecha'])
+        data_combine = format_dates(data_combine)
+        data_combine = format_columns(data_combine)
+        data_combine.to_csv('data_lake/cleansed/precios-horarios.csv',index=False)       
+    except EmptyDataError:
+
 
 #    raise NotImplementedError("Implementar esta función")
 
