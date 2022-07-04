@@ -20,12 +20,12 @@ def ingest_data():
     path_to_save_rawdata = 'data_lake/landing/'
     for years in years_to_download:
         if years in range(2016,2018):
-            extension = '.xls?raw=true'
+            extension = '.xls'
             url_to_download = str(url) + str(years) + str(extension)
             path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:4])
             urllib.request.urlretrieve(url_to_download, path_to_save)
         else:
-            extension = '.xlsx?raw=true'      
+            extension = '.xlsx'      
             url_to_download = str(url) + str(years) + str(extension)
             path_to_save = str(path_to_save_rawdata) + str(years) + str(extension[0:5])
             urllib.request.urlretrieve(url_to_download, path_to_save)
