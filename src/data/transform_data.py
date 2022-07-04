@@ -28,6 +28,8 @@ def transform_data():
     path_to_export = 'data_lake/landing/'
     for files in files_to_export:
         file_name = get_file_name(path_to_export,files)
+        if files == 'result.txt':
+            None
         if int(files[0:4]) in range(1995,2000):
             print(files[0:4])
             file_to_csv = pd.read_excel(file_name,skiprows=range(1, 3), header=1, usecols = "A:Y")
