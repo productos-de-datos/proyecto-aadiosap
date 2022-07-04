@@ -212,7 +212,7 @@
     },
     {
       "name": "Test 22",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
       "run": "python3 src/features/make_features.py",
       "input": "",
       "output": "",
@@ -222,7 +222,7 @@
     },
     {
       "name": "Test 23",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
       "run": "python3 src/models/make_forecasts.py",
       "input": "",
       "output": "",
@@ -232,8 +232,8 @@
     },
     {
       "name": "Test 24",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
-      "run": "rm -rf src/models/precios-diarios.pkl | python3 src/models/train_daily_model.py",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "run": "python3 src/models/train_daily_model.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -242,7 +242,7 @@
     },
     {
       "name": "Test 25",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
       "run": "python3 src/visualization/make_daily_prices_plot.py",
       "input": "",
       "output": "",
