@@ -1,7 +1,17 @@
 """
 Módulo de transformación de datos.
 -------------------------------------------------------------------------------
+En este modulo se transforman los documentos .xls y .xlsx previamente
+descargados en el modulo clean_data.py utilizando las siguientes funciones:
 
+get_files_to_export: obtiene list de la ruta de los 27 archivos de precios.
+get_file_name: concatena la ruta a grabar con el nombre del archivo, formando
+    el path completo donde se extraen los documentos excel.
+format_headers: da formato a las columnas de cada excel en tipo H00
+remove_nas: elimina aquellas filas con registros en N/A.
+remove_duplicated: elimina filas con registros duplicados, dejando la primera
+    observación.
+save_file: guarda el archivo transformado en tipo CSV
 """
 
 
@@ -64,21 +74,15 @@ def transform_data():
             file_to_csv_wo_duplicated = remove_duplicated(file_to_csv_wo_nas)
             save_file(file_to_csv_wo_duplicated,files)
 
-
 def get_files_to_export():     
     files_to_export = os.listdir('data_lake/landing')
     files_to_export = files_to_export[0:27]
-    path_to_export = 'data_lake/landing/'
     return files_to_export
         
 def get_file_name(path,name_file):
     file_name = path + name_file
     return file_name
 
-def get_header(file_to_csv_raw):
-    header_row = file_to_csv_raw[file_to_csv_raw[0].eq('Fecha')].index.values[0]
-    return header_row
-    
 def format_headers(df_wo_headers):   
     column_names = list(df_wo_headers.columns)
     column_names = list((x.zfill(2) for x in column_names))
@@ -87,7 +91,8 @@ def format_headers(df_wo_headers):
     return df_wo_headers
     
 def format_dates(file_to_csv_w_dates):
-    file_to_csv_w_dates['Fecha'] = file_to_csv_w_dates['Fecha'].apply(lambda x: datetime.strptime(x,"%Y-%m-%d") if type(x) == str else x)
+    file_to_csv_w_dates['Fecha'] = file_to_csv_w_dates['Fecha'].apply(
+        lambda x: datetime.strptime(x,"%Y-%m-%d") if type(x) == str else x)
     return file_to_csv_w_dates
     
 def remove_nas(data_w_na):
@@ -101,9 +106,19 @@ def remove_duplicated(data_w_duplicated):
 def save_file(df_to_save,files):
     df_to_save.to_csv('data_lake/raw/{}.csv'.format(files[0:4]),index=False,encoding='utf-8')
 
-
+def test_remove_duplicated():
+    prueba = [['a', 'a'],
+              ['a', 'a'],
+              ['b', 5]]
+    resultado = [['a', 'a'],
+                ['b', 5]]
+    df_prueba = pd.DataFrame(prueba)
+    df_resultado = pd.DataFrame(resultado)
+    assert remove_duplicated(df_prueba) == df_resultado
 
 if __name__ == "__main__":
     doctest.testmod()
     transform_data()
+
+
 

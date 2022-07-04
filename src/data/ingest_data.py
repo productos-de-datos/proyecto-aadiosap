@@ -1,6 +1,9 @@
 """
 Módulo de ingestión de datos.
 -------------------------------------------------------------------------------
+En este modulo se genera rango de años que junto con la url serviran para realizar la descarga
+de los archivos del repositorio solicitadom se genera condicional el cual tiene en cuenta aquellos
+archivos grabados como .xls
 
 """
 """Ingeste los datos externos a la capa landing del data lake.
