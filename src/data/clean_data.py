@@ -59,18 +59,12 @@ def test_format_columns():
         'Edad': [42, 40, 37],
         'Departamento': ['Comunicación', 'Administración', 'Ventas']
     }
-
-    esperado = {
-        'fecha' : ['Juan', 'Laura', 'Pepe'],
-        'hora': [42, 40, 37],
-        'precio': ['Comunicación', 'Administración', 'Ventas']
-    }
+    esperado = ['fecha','hora','precio']
     df_datos = pd.DataFrame(datos)
-    df_esperado = pd.DataFrame(esperado) 
-    assert format_columns(df_datos)==df_esperado
+    df_datos = format_columns(df_datos)
+    assert list(df_datos.columns)==esperado
 
 if __name__ == "__main__":
     doctest.testmod()
     clean_data()
-
 
