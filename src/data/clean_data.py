@@ -23,7 +23,6 @@ import doctest
 def get_files_to_combine(root_path):
     files_to_combine = os.listdir(root_path)
     files_to_combine = files_to_combine[0:26]
-    print(files_to_combine)
     files_to_combine = list(map(lambda x:'data_lake/raw/'+str(x),files_to_combine))
     return files_to_combine
     
@@ -44,7 +43,6 @@ def clean_data():
     data_combine = pd.melt(data_combine,id_vars=['Fecha'])
     data_combine = format_dates(data_combine)
     data_combine = format_columns(data_combine)
-    print(data_combine.dtypes)
     data_combine.to_csv('data_lake/cleansed/precios-horarios.csv',index=False)       
 
 #    raise NotImplementedError("Implementar esta función")
