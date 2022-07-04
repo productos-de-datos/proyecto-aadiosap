@@ -69,7 +69,7 @@ class daily_reports_pipeline(Task):
 
 class monthly_reports_pipeline(Task):
     def requires(self):
-        return clean_data_pipeline()
+        return daily_reports_pipeline()
     
     def output(self):
         return LocalTarget('data_lake/business/monthly_prices.txt')
@@ -79,11 +79,7 @@ class monthly_reports_pipeline(Task):
         with self.output().open('w') as outfile:
             compute_monthly_prices.compute_monthly_prices() 
 
-class report_prices(Task):
-    def requires(self):
-        return [daily_reports_pipeline(),monthly_reports_pipeline()]
-
 if __name__ == "__main__":
     import doctest
-    luigi.run(['report_prices','--local-scheduler'])
+    luigi.run(['monthly_reports_pipeline','--local-scheduler'])
     doctest.testmod()
