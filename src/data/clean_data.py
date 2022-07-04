@@ -47,6 +47,7 @@ def clean_data():
         data_combine = format_columns(data_combine)
         data_combine.to_csv('data_lake/cleansed/precios-horarios.csv',index=False)       
     except EmptyDataError:
+        print('Datos no leidos')
 
 
 #    raise NotImplementedError("Implementar esta función")
