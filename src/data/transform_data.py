@@ -64,18 +64,27 @@ def save_file(file_to_csv,files):
 def transform_data():
     files_to_export = get_files_to_export()
     path_to_export = 'data_lake/landing/'
-    raw_extension = '?raw=true'    
-    
     for files in files_to_export:
-        file_name = get_file_name(path_to_export,files)
-        file_to_csv_raw = pd.read_excel(file_name,header=None)
-        file_to_csv_w_headers = pd.read_excel(
-            file_name,header=get_header(file_to_csv_raw),usecols="A:Y")
-        file_to_csv_with_headers = format_headers(file_to_csv_w_headers)
-        file_to_csv = format_dates(file_to_csv_with_headers)
-        file_to_csv = remove_nas(file_to_csv)
-        file_to_csv = remove_duplicated(file_to_csv)
-        save_file(file_to_csv,files)
+        if files == '2016.xls' or files == '2017.xls':
+            file_name = get_file_name(path_to_export,files)
+            file_to_csv_raw = pd.read_excel(file_name,header=None)
+            file_to_csv_w_headers = pd.read_excel(
+                file_name,header=get_header(file_to_csv_raw),usecols="A:Y")
+            file_to_csv_with_headers = format_headers(file_to_csv_w_headers)
+            file_to_csv = format_dates(file_to_csv_with_headers)
+            file_to_csv = remove_nas(file_to_csv)
+            file_to_csv = remove_duplicated(file_to_csv)
+            save_file(file_to_csv,files)
+        else:
+            file_name = get_file_name(path_to_export,files)
+            file_to_csv_raw = pd.read_excel(file_name,header=None)
+            file_to_csv_w_headers = pd.read_excel(
+                file_name,header=get_header(file_to_csv_raw),usecols="A:Y")
+            file_to_csv_with_headers = format_headers(file_to_csv_w_headers)
+            file_to_csv = format_dates(file_to_csv_with_headers)
+            file_to_csv = remove_nas(file_to_csv)
+            file_to_csv = remove_duplicated(file_to_csv)
+            save_file(file_to_csv,files)
 
 if __name__ == "__main__":
     doctest.testmod()
