@@ -110,15 +110,11 @@ def test_remove_duplicated():
     prueba = [['a', 'a'],
               ['a', 'a'],
               ['b', 5]]
-    resultado = [['a', 'a'],
-                ['b', 5]]
+    resultado = ['a','b']
     df_prueba = pd.DataFrame(prueba)
-    df_resultado = pd.DataFrame(resultado)
-    assert remove_duplicated(df_prueba) == df_resultado
+    df_prueba = remove_duplicated(df_prueba)
+    assert list(df_prueba[0]) == resultado
 
 if __name__ == "__main__":
     doctest.testmod()
     transform_data()
-
-
-
