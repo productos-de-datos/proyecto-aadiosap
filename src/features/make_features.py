@@ -4,8 +4,7 @@ Módulo de caracteristicas del modelo de proponistuco de precios.
 
 """
 
-def make_features():
-    """Prepara datos para pronóstico.
+"""Prepara datos para pronóstico.
 
     Cree el archivo data_lake/business/features/precios-diarios.csv. Este
     archivo contiene la información para pronosticar los precios diarios de la
@@ -18,7 +17,8 @@ def make_features():
     analizar y determinar las variables explicativas del modelo.
 
     """
-    import pandas as pd
+import pandas as pd
+def make_features():
     df = pd.read_csv('data_lake/business/precios-diarios.csv')
     df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
     df['day_number'] = df.fecha.dt.weekday
