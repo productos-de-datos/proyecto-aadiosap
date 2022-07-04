@@ -10,9 +10,14 @@ Módulo de ingestión de datos.
     descarga debe realizarse usando únicamente funciones de Python.
 
 """
+import doctest
+import numpy as np
+from urllib import request
 
-
-def ingest_data(years_to_download,url,path_to_save_rawdata):
+def ingest_data():
+    years_to_download = np.arange(1995,2022,1)
+    url = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/'
+    path_to_save_rawdata = 'data_lake/landing/'
     for years in years_to_download:
         if years in range(2016,2018):
             extension = '.xls?raw=true'
@@ -26,12 +31,6 @@ def ingest_data(years_to_download,url,path_to_save_rawdata):
             request.urlretrieve(url_to_download, path_to_save)
     
 if __name__ == "__main__":
-    import doctest
-    import numpy as np
-    from urllib import request
-    years_to_download = np.arange(1995,2022,1)
-    url = 'https://github.com/jdvelasq/datalabs/blob/master/datasets/precio_bolsa_nacional/xls/'
-    path_to_save_rawdata = 'data_lake/landing/'
     doctest.testmod()
-    ingest_data(years_to_download,url,path_to_save_rawdata)
+    ingest_data()
     

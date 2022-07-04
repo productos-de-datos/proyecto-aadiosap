@@ -4,9 +4,7 @@ Módulo de calculo de precios mensuales.
 
 """
 
-
-def compute_monthly_prices():
-    """Compute los precios promedios mensuales.
+"""Compute los precios promedios mensuales.
 
     Usando el archivo data_lake/cleansed/precios-horarios.csv, compute el prcio
     promedio mensual. Las
@@ -18,10 +16,13 @@ def compute_monthly_prices():
 
 
 
-    """
+"""
+import pandas as pd
+import datetime as dt
+import doctest
+
+def compute_monthly_prices():
     #raise NotImplementedError("Implementar esta función")
-
-
     prices_per_hour = pd.read_csv('data_lake/cleansed/precios-horarios.csv')
     prices_per_month = prices_per_hour.copy()
     prices_per_month['fecha'] = prices_per_month['fecha'].map(lambda x:str(x)[0:7]+str('-01'))
@@ -31,8 +32,5 @@ def compute_monthly_prices():
 
 
 if __name__ == "__main__":
-    import pandas as pd
-    import datetime as dt
-    import doctest
     doctest.testmod()
     compute_monthly_prices()

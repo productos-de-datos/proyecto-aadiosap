@@ -15,9 +15,14 @@ Módulo de transformación de datos.
     """
     
 """"""""   
+import doctest
+import os
+import pandas as pd
+from datetime import datetime
 
 def get_files_to_export():     
     files_to_export = os.listdir('data_lake/landing')
+    files_to_export = files_to_export[0:27]
     path_to_export = 'data_lake/landing/'
     return files_to_export
         
@@ -52,7 +57,9 @@ def remove_duplicated(data_w_duplicated):
 def save_file(file_to_csv,files):
     file_to_csv.to_csv('data_lake/raw/{}.csv'.format(files[0:4]),index=False)
 
-def transform_data(files_to_export,path_to_export):
+def transform_data():
+    files_to_export = get_files_to_export()
+    path_to_export = 'data_lake/landing/'
     for files in files_to_export:
         file_name = get_file_name(path_to_export,files)
         file_to_csv_raw = pd.read_excel(file_name,header=None)
@@ -64,12 +71,6 @@ def transform_data(files_to_export,path_to_export):
         save_file(file_to_csv,files)
 
 if __name__ == "__main__":
-    import doctest
-    import os
-    import pandas as pd
-    from datetime import datetime
     doctest.testmod()
-    files_to_export = get_files_to_export()
-    path_to_export = 'data_lake/landing/'
-    transform_data(files_to_export,path_to_export)
+    transform_data()
 
