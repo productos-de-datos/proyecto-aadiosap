@@ -62,8 +62,8 @@ def transform_data():
     path_to_export = 'data_lake/landing/'
     for files in files_to_export:
         file_name = get_file_name(path_to_export,files)
-        file_to_csv_raw = pd.read_excel(file_name,header=None,engine='pyxlsb')
-        file_to_csv_w_headers = pd.read_excel(file_name,header=get_header(file_to_csv_raw),usecols="A:Y",engine='pyxlsb')
+        file_to_csv_raw = pd.read_excel(file_name,header=None,engine='xlrd')
+        file_to_csv_w_headers = pd.read_excel(file_name,header=get_header(file_to_csv_raw),usecols="A:Y",engine='xlrd')
         file_to_csv_with_headers = format_headers(file_to_csv_w_headers)
         file_to_csv = format_dates(file_to_csv_with_headers)
         file_to_csv = remove_nas(file_to_csv)
