@@ -1,6 +1,9 @@
 """
 Módulo de pronostico de datos.
 -------------------------------------------------------------------------------
+En este modulo se genera una copia del features para proceder a realizar
+el pronostico de los datos utilizando el modelo precios-diarios.pkl
+siendo casteado mediante la función pickle.load.
 
 """"""Construya los pronosticos con el modelo entrenado final.
 

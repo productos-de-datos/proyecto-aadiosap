@@ -1,6 +1,8 @@
 """
 Módulo de calculo de precios mensuales.
 -------------------------------------------------------------------------------
+En este modulo se calculan los precios promedios mensuales mediante la funcion 
+groupby aplicado sobre la fecha YYYY-MM.
 
 """
 

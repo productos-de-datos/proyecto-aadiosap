@@ -1,6 +1,8 @@
 """
 Módulo de caracteristicas del modelo de proponistuco de precios.
 -------------------------------------------------------------------------------
+En este modulo se formatea la fecha tipo número de la semana con el fin 
+de ser el input para el modelo de regresión lineal de pronosticos de precios
 
 """
 

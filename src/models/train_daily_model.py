@@ -1,7 +1,9 @@
 """
 Módulo de entrenamiento de modelo de pronostico de precios futuros.
 -------------------------------------------------------------------------------
-
+Según la información guardada en make features se realiza un particionamiento
+de los datos para entrenar el modelo de regresión linea. Luego de
+hacer el entrenamiento este se guarda mediante la función pickle.dump
 """
 import pandas as pd
 from sklearn.model_selection import train_test_split

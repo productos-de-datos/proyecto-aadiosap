@@ -1,6 +1,9 @@
 """
 Módulo de creación de graficos de datos promedios diarios.
 -------------------------------------------------------------------------------
+En este modulo se genera una grafica para los precios promedios diarios, según 
+los indices que sean elegistos en reset_index y el color y nombre que se
+determinen en set_plot.
 
 """
 

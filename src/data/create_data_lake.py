@@ -2,6 +2,8 @@
 """
 Módulo de creación de datalake.
 -------------------------------------------------------------------------------
+En este modulo se crea la estructura solicitada del data lake mediante la
+función os.makedirs y con ayuda de listas.
 
 """
 

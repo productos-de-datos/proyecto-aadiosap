@@ -1,6 +1,10 @@
 """
 Módulo de orquestamiento con luigui.
 -------------------------------------------------------------------------------
+En este modulo se orquestan los diferentes modulos necesarios para generar 
+los precios promedios diarios y mensuales. Definiendo cada prerequisito
+de cada modulo y ejecutando una acción si este se ejecuta correctamente
+en este caso imprimir MODULO--------------OK
 
 """
 

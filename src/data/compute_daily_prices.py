@@ -1,6 +1,8 @@
 """
 Módulo de calculo de precios diarios.
 -------------------------------------------------------------------------------
+En este modulo se calculan los precios promedios diarios mediante la funcion 
+groupby aplicado sobre la fecha YYYY-MM-DD.
 
 """
 
