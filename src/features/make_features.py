@@ -1,5 +1,12 @@
-def make_features():
-    """Prepara datos para pronóstico.
+"""
+Módulo de caracteristicas del modelo de proponistuco de precios.
+-------------------------------------------------------------------------------
+En este modulo se formatea la fecha tipo número de la semana con el fin 
+de ser el input para el modelo de regresión lineal de pronosticos de precios
+
+"""
+
+"""Prepara datos para pronóstico.
 
     Cree el archivo data_lake/business/features/precios-diarios.csv. Este
     archivo contiene la información para pronosticar los precios diarios de la
@@ -12,10 +19,15 @@ def make_features():
     analizar y determinar las variables explicativas del modelo.
 
     """
-    raise NotImplementedError("Implementar esta función")
-
+import pandas as pd
+def make_features():
+    df = pd.read_csv('data_lake/business/precios-diarios.csv')
+    df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
+    df['day_number'] = df.fecha.dt.weekday
+    df.to_csv('data_lake/business/features/precios_diarios.csv', index=False)
+    return True
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
+    make_features()
