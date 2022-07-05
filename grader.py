@@ -1,11 +1,12 @@
-#
-# Evaluador
-# ---------------------------------------------------------------------------------------
-#
-# test_01: pylint
-# test_02: pytest
-# test_03: doctest
-#
+"""
+Módulo evaluación del curso
+-------------------------------------------------------------------------------
+En este modulo se testea los doce primeros puntos, los cuales se basan principalmente
+en la validación de creación de: data lake, archivos xls y xlsx, archivos csv,
+figuras .png entre otros.
+
+"""
+
 import os
 import sys
 
@@ -159,4 +160,7 @@ test = {
     "12": test_12,
 }[sys.argv[1]]
 
-test()
+if __name__ == "__main__":
+    import doctest    
+    doctest.testmod()    
+    test()
